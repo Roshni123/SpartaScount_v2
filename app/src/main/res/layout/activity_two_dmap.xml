@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="com.example.android.spartascout.TwoDMapActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <TextView
+            style="@style/VRTextView"
+            android:text="Where would you like to go?"
+            />
+
+
+        <EditText
+            style ="@style/VRTextInputStyle"
+            android:id="@+id/Location"
+            android:hint="Enter Desired Location"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Desired Mode"
+            android:textSize="24sp"
+            android:layout_marginBottom="16dp"
+            />
+
+
+        <RadioGroup
+            android:id="@+id/radioMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <RadioButton
+                android:id="@+id/walk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Walk"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/bike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Bicycle" />
+
+            <RadioButton
+                android:id="@+id/car"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Car" />
+
+        </RadioGroup>
+
+
+        <Button
+            style = "@style/SubmitButtonStyle"
+            android:id="@+id/submitLocation"
+            android:text="Submit"
+            />
+
+
+    </LinearLayout>
+
+</ScrollView>
