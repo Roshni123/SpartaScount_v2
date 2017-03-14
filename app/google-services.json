@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "971510081410",
+    "project_id": "spartascout-159622"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:971510081410:android:ab5705def02113c7",
+        "android_client_info": {
+          "package_name": "com.example.android.spartascout"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "971510081410-bnsumsr8u6m2341h8t8l2cnj3remtu83.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "971510081410-hjl0ll3i8tu0tkac5tinqcv3mcnra3ts.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.spartascout",
+            "certificate_hash": "82711785ecf5fdfbe79cf2fb6762afb922ab6f33"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBN4vfaaJXdfw3EuAQYvEPrG1SgJRz467I"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
