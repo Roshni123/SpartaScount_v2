@@ -15,7 +15,7 @@
 
     <TextView
         android:id="@+id/text"
-        android:text="\n\nPLACE YOUR PHONE IN THE VR HEADSET AND PRESS START"
+        android:text="\n\nPRESS START AND PLACE YOUR PHONE IN THE VR HEADSET"
         android:textSize="40dp"
         android:textColor="#FF0000"
         android:textStyle="bold"

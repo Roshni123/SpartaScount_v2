@@ -31,9 +31,9 @@ public class HomeActivity extends AppCompatActivity {
 
         TextView textView = (TextView) findViewById(R.id.sign_in_success);
         if(s != null)
-         textView.setText("Welcome "+ s);
+            textView.setText("Welcome "+ s);
         else
-         textView.setText("Welcome ");
+            textView.setText("Welcome ");
 
         // Find the View that shows the vr category
         Button virtual_tour = (Button) findViewById(R.id.virtual_tour);
@@ -66,21 +66,6 @@ public class HomeActivity extends AppCompatActivity {
         }*/
 
 
-        // Find the View that shows the pub nub category
-        Button pubNub = (Button) findViewById(R.id.publish_location);
-
-        // Set a click listener on that View
-        if (pubNub != null) {
-            pubNub.setOnClickListener(new View.OnClickListener() {
-                // The code in this method will be executed when the publish location View is clicked on.
-                @Override
-                public void onClick(View view) {
-                    Intent pubNubIntent = new Intent(HomeActivity.this, PubNubActivity.class);
-                    startActivity(pubNubIntent);
-                }
-            });
-        }
-
 
         // Find the View that shows the crime report category
         Button crimeReport = (Button) findViewById(R.id.crime_report);
@@ -91,7 +76,6 @@ public class HomeActivity extends AppCompatActivity {
                 // The code in this method will be executed when the crime report View is clicked on.
                 @Override
                 public void onClick(View view) {
-
                     Calendar cal = Calendar.getInstance();
                     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -118,7 +102,7 @@ public class HomeActivity extends AppCompatActivity {
                 // The code in this method will be executed when the campus news View is clicked on.
                 @Override
                 public void onClick(View view) {
-                    Intent campusNewsIntent = new Intent(HomeActivity.this, CampusNewsActivity.class);
+                    Intent campusNewsIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://events.sjsu.edu"));
                     startActivity(campusNewsIntent);
                 }
             });
@@ -145,8 +129,6 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         //
-
-        // Find the View that shows the vr category
         Button sign_out = (Button) findViewById(R.id.sign_out);
 
         // Set a click listener on that View
@@ -183,6 +165,5 @@ public class HomeActivity extends AppCompatActivity {
         mGoogleApiClient.connect();
         super.onStart();
     }
-
 }
 
