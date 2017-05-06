@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Sparta Scout</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="library">&#160;&#160;&#160;&#160;&#160; Via Library &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; (4 mins) </string>
+    <string name="engineering">&#160;&#160;&#160;&#160;&#160;Via Engineering Building &#160;(5 mins) </string>
+</resources>

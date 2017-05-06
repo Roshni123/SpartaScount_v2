@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="landmarks">
+    <item>Dr. Martin Luther King, Jr. Library</item>
+    <item>Dudley Moorhead Hall</item>
+    <item>MacQuarrie Hall</item>
+    <item>Morris Dailey Auditorium</item>
+    <item>Student Union</item>
+    <item>Sweeney Hall</item>
+    <item>Washington Square Hall</item>
+    <item>Yoshihiro Uchida Hall</item>
+    <item>Engineering Building</item>
+    <item>Boccardo Business Center</item>
+</string-array>
+</resources>
