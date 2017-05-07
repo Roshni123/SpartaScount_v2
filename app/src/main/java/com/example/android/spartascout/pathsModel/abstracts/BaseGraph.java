@@ -1,11 +1,7 @@
-package com.example.sanjeedha.Paths.model.abstracts;
+package com.example.android.spartascout.pathsModel.abstracts;
 
 import java.util.List;
 import java.util.Set;
-
-/**
- * Created by haroon on 4/25/17.
- */
 
 public interface BaseGraph {
     List<BaseVertex> get_vertex_list();

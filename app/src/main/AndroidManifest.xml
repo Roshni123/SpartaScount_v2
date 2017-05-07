@@ -31,7 +31,7 @@
             android:name=".VoiceAssistantActivity"
             android:label="Voice Assistant" />
         <activity
-            android:name=".PubNubActivity"
+            android:name=".PathsActivity"
             android:label="Publish Location" />
         <activity
             android:name=".CrimeReportActivity"

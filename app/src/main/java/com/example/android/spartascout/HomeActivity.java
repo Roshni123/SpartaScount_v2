@@ -44,17 +44,17 @@ public class HomeActivity extends AppCompatActivity {
         }*/
 
 
-        // Find the View that shows the pub nub category
-        Button pubNub = (Button) findViewById(R.id.publish_location);
+        // Find the View that shows the paths category
+        Button paths = (Button) findViewById(R.id.paths);
 
         // Set a click listener on that View
-        if (pubNub != null) {
-            pubNub.setOnClickListener(new View.OnClickListener() {
-                // The code in this method will be executed when the publish location View is clicked on.
+        if (paths != null) {
+            paths.setOnClickListener(new View.OnClickListener() {
+                // The code in this method will be executed when the paths View is clicked on.
                 @Override
                 public void onClick(View view) {
-                    Intent pubNubIntent = new Intent(HomeActivity.this, PubNubActivity.class);
-                    startActivity(pubNubIntent);
+                    Intent paths = new Intent(HomeActivity.this, PathsActivity.class);
+                    startActivity(paths);
                 }
             });
         }

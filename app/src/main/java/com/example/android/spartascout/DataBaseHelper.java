@@ -1,6 +1,5 @@
 package com.example.android.spartascout;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -13,6 +12,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class DataBaseHelper extends SQLiteOpenHelper{
@@ -22,7 +22,8 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 
     private static String DB_NAME = "spartascout.db";
     public static final String TABLE_EDGES = "RouteEdges";
-    public static final String TABLE_BUILDINGs = "Buildings";
+    public static final String TABLE_BUILDINGS = "Buildings";
+    public static final String TABLE_NODES = "RouteNodes";
 
     private SQLiteDatabase myDataBase;
 
@@ -174,7 +175,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         HashMap<String, Integer> buildingNodes = new HashMap<>();
         String myDbPath = DB_PATH + DB_NAME;
         myDataBase = SQLiteDatabase.openDatabase(myDbPath, null, SQLiteDatabase.OPEN_READONLY);
-        String selectQuery = "SELECT  * FROM " + TABLE_BUILDINGs;
+        String selectQuery = "SELECT  * FROM " + TABLE_BUILDINGS;
         Cursor c = myDataBase.rawQuery(selectQuery, null);
 
         if (c.moveToFirst()) {
@@ -185,5 +186,28 @@ public class DataBaseHelper extends SQLiteOpenHelper{
             } while (c.moveToNext());
         }
         return buildingNodes;
+    }
+
+    public HashMap<Integer, ArrayList<Float>> getNodeCoordinates() {
+        HashMap<Integer, ArrayList<Float>> nodeCoordinates = new HashMap<>();
+        String myDbPath = DB_PATH + DB_NAME;
+        myDataBase = SQLiteDatabase.openDatabase(myDbPath, null, SQLiteDatabase.OPEN_READONLY);
+        String selectQuery = "SELECT  * FROM " + TABLE_NODES;
+        Cursor c = myDataBase.rawQuery(selectQuery, null);
+
+        if (c.moveToFirst()) {
+            do {
+                int node_id = c.getInt(c.getColumnIndex("node_id"));
+                float x = c.getInt(c.getColumnIndex("x"));
+                float y = c.getInt(c.getColumnIndex("y"));
+
+                ArrayList<Float> tmp = new ArrayList<>();
+                tmp.add(x);
+                tmp.add(y);
+
+                nodeCoordinates.put(node_id, tmp);
+            } while (c.moveToNext());
+        }
+        return nodeCoordinates;
     }
 }

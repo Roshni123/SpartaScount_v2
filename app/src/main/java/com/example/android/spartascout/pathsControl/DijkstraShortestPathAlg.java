@@ -1,4 +1,9 @@
-package com.example.sanjeedha.Paths.control;
+package com.example.android.spartascout.pathsControl;
+
+import com.example.android.spartascout.pathsModel.Graph;
+import com.example.android.spartascout.pathsModel.Path;
+import com.example.android.spartascout.pathsModel.abstracts.BaseGraph;
+import com.example.android.spartascout.pathsModel.abstracts.BaseVertex;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -9,11 +14,6 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Set;
 import java.util.Vector;
-
-import com.example.sanjeedha.Paths.model.Graph;
-import com.example.sanjeedha.Paths.model.Path;
-import com.example.sanjeedha.Paths.model.abstracts.BaseGraph;
-import com.example.sanjeedha.Paths.model.abstracts.BaseVertex;
 
 public class DijkstraShortestPathAlg
 {

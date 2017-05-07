@@ -4,15 +4,22 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.speech.RecognizerIntent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +32,8 @@ import com.example.android.spartascout.pathsModel.abstracts.BaseVertex;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 
 public class PathsActivity extends AppCompatActivity {
@@ -34,10 +43,14 @@ public class PathsActivity extends AppCompatActivity {
     private TextView textViewPath;
     private ImageButton btnSpeak;
     private Button btnSearch;
+    private ImageView imageViewSJSU;
     private final int REQ_CODE_SPEECH_INPUT = 100;
     DataBaseHelper dbHelper;
     Graph graph = new Graph();
     HashMap<String, Integer> buildingNodes = new HashMap<>();
+    HashMap<Integer, ArrayList<Float>> nodeCoordinates = new HashMap<>();
+
+    private int fieldImgXY[] = new int[2];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +105,8 @@ public class PathsActivity extends AppCompatActivity {
         Set<String> keys = buildingNodes.keySet();
         String [] buildings = keys.toArray(new String[keys.size()]);
 
+        nodeCoordinates = dbHelper.getNodeCoordinates();
+
         txtSpeechInputFrom = (AutoCompleteTextView) findViewById(R.id.txtSpeechInputFrom);
         txtSpeechInputTo = (AutoCompleteTextView) findViewById(R.id.txtSpeechInputTo);
 
@@ -104,6 +119,7 @@ public class PathsActivity extends AppCompatActivity {
 
         btnSpeak = (ImageButton) findViewById(R.id.speak);
         btnSearch = (Button) findViewById(R.id.searchPath);
+        imageViewSJSU = (ImageView) findViewById(R.id.imageViewSJSU);
 
         btnSpeak.setOnClickListener(new View.OnClickListener() {
 
@@ -119,6 +135,17 @@ public class PathsActivity extends AppCompatActivity {
                 searchPath();
             }
         });
+
+        imageViewSJSU.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN){
+                    Log.d("Touch coordinates : ",
+                            String.valueOf(event.getX()) + "x" + String.valueOf(event.getY()));
+                }
+                return true;
+            }
+        });
     }
 
     /**
@@ -126,6 +153,9 @@ public class PathsActivity extends AppCompatActivity {
      * */
     private void promptSpeechInput() {
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
         try {
             startActivityForResult(intent, REQ_CODE_SPEECH_INPUT);
         } catch (ActivityNotFoundException a) {
@@ -150,27 +180,68 @@ public class PathsActivity extends AppCompatActivity {
             }
             Log.i("Paths", "Path "+i+++" : "+p);
         }
+
+        drawPaths(paths);
+    }
+
+    private void drawPaths(ArrayList<Path> paths){
+        BitmapFactory.Options myOptions = new BitmapFactory.Options();
+        myOptions.inScaled = false;
+        myOptions.inPreferredConfig = Bitmap.Config.ARGB_8888;// important
+
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.campus_map, myOptions);
+        Paint paint = new Paint();
+        paint.setAntiAlias(true);
+        paint.setColor(Color.BLUE);
+
+
+        Bitmap workingBitmap = Bitmap.createBitmap(bitmap);
+        Bitmap mutableBitmap = workingBitmap.copy(Bitmap.Config.ARGB_8888, true);
+
+
+        Canvas canvas = new Canvas(mutableBitmap);
+
+        Path best = paths.get(0);
+        List<BaseVertex> vertices =  best.get_vertices();
+
+        for (int i = 0; i < vertices.size() - 1; i++) {
+            int node1 = vertices.get(i).get_id();
+            float x1 = nodeCoordinates.get(node1).get(0);
+            float y1 = (float) (nodeCoordinates.get(node1).get(1) - 1171.0);
+
+            int node2 = vertices.get(i+1).get_id();
+            float x2 = nodeCoordinates.get(node2).get(0);
+            float y2 = (float) (nodeCoordinates.get(node2).get(1) - 1171.0);
+
+            canvas.drawLine(x1, y1, x2, y2, paint);
+        }
+
+//        canvas.drawLine(100, 100, 500, 100, paint);
+
+        ImageView imageView = (ImageView)findViewById(R.id.imageViewSJSU);
+        imageView.setAdjustViewBounds(true);
+        imageView.setImageBitmap(mutableBitmap);
     }
 
     // Get Paths
     private ArrayList<Path> getPaths(String source, String destination, int count) {
         ArrayList<Path> paths = new ArrayList<>();
 
-        if (!buildingNodes.containsKey(source.toLowerCase())) {
+        if (!buildingNodes.containsKey(source)) {
             Log.e("test", "Source does not exist: " + source);
             txtSpeechInputFrom.setError("Source does not exist");
             return paths;
         }
 
-        if (!buildingNodes.containsKey(destination.toLowerCase())) {
+        if (!buildingNodes.containsKey(destination)) {
             Log.e("test", "Destination does not exist: " + destination);
             txtSpeechInputTo.setError("Destination does not exist");
             return paths;
         }
 
         YenTopKShortestPathsAlg yenAlg = new YenTopKShortestPathsAlg(graph,
-                graph.get_vertex(buildingNodes.get(source.toLowerCase())),
-                graph.get_vertex(buildingNodes.get(destination.toLowerCase()))
+                graph.get_vertex(buildingNodes.get(source)),
+                graph.get_vertex(buildingNodes.get(destination))
         );
 
         int i = 0;
@@ -201,8 +272,8 @@ public class PathsActivity extends AppCompatActivity {
                     Log.i("test", result.get(0));
 
 //                    String userInput = "from engineering building to mlk library";
-                    String userInput = result.get(0);
-                    String[] tokens = userInput.split("\\s?from\\s|\\sto\\s|\\s2\\s");
+                    String userInput = result.get(0).toLowerCase();
+                    String[] tokens = userInput.split("\\s?from\\s|\\sto\\s|\\sii\\s|\\s2\\s");
 
                     String source = "";
                     String destination = "";
@@ -228,6 +299,8 @@ public class PathsActivity extends AppCompatActivity {
 
                     txtSpeechInputFrom.setText(source);
                     txtSpeechInputTo.setText(destination);
+
+                    drawPaths(paths);
 
                 }
                 break;

@@ -1,17 +1,17 @@
-package com.example.sanjeedha.Paths.control;
+package com.example.android.spartascout.pathsControl;
+
+import com.example.android.spartascout.pathsModel.Graph;
+import com.example.android.spartascout.pathsModel.Pair;
+import com.example.android.spartascout.pathsModel.Path;
+import com.example.android.spartascout.pathsModel.QYPriorityQueue;
+import com.example.android.spartascout.pathsModel.VariableGraph;
+import com.example.android.spartascout.pathsModel.abstracts.BaseGraph;
+import com.example.android.spartascout.pathsModel.abstracts.BaseVertex;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
-
-import com.example.sanjeedha.Paths.model.Graph;
-import com.example.sanjeedha.Paths.model.Pair;
-import com.example.sanjeedha.Paths.model.Path;
-import com.example.sanjeedha.Paths.model.QYPriorityQueue;
-import com.example.sanjeedha.Paths.model.VariableGraph;
-import com.example.sanjeedha.Paths.model.abstracts.BaseGraph;
-import com.example.sanjeedha.Paths.model.abstracts.BaseVertex;
 
 public class YenTopKShortestPathsAlg
 {
@@ -33,7 +33,6 @@ public class YenTopKShortestPathsAlg
      * Default constructor.
      *
      * @param graph
-     * @param k
      */
     public YenTopKShortestPathsAlg(BaseGraph graph)
     {
@@ -252,8 +251,6 @@ public class YenTopKShortestPathsAlg
      * Get the top-K shortest paths connecting the source and the target.
      * This is a batch execution of top-K results.
      *
-     * @param source
-     * @param sink
      * @param top_k
      * @return
      */

@@ -1,8 +1,4 @@
-package com.example.sanjeedha.Paths.model.abstracts;
-
-/**
- * Created by haroon on 4/25/17.
- */
+package com.example.android.spartascout.pathsModel.abstracts;
 
 public interface BaseVertex {
     int get_id();

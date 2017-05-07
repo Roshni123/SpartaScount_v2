@@ -1,5 +1,29 @@
 [
     {
+        "outputFile": "/Users/sanjeedha/Projects/SpartaScount_v2/cardboardmaster/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values/values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 65,
+                    "endOffset": 116
+                },
+                "from": {
+                    "file": "/Users/sanjeedha/Projects/SpartaScount_v2/cardboardmaster/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 65,
+                        "endOffset": 116
+                    }
+                }
+            }
+        ]
+    },
+    {
         "outputFile": "/Users/lakshminarayanansdagopan/code/non_repo_code/rosh/Final Project/SpartaScout_v2/cardboardmaster/build/intermediates/res/merged/androidTest/debug/values/values.xml",
         "map": [
             {
