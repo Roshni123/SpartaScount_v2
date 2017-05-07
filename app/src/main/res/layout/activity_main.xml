@@ -22,31 +22,33 @@
             android:layout_marginBottom="48dp"
             android:src="@drawable/sjsu" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome to Sparta Scout Virtual Reality"
+            android:layout_marginBottom="48dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:textSize="16dp"
+        />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign In with your SJSU Email ID OR Gmail ID"
+            android:layout_marginBottom="48dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/colorPrimary"
+        />
 
-        <!-- Get styles from styles.xml  -->
-
-        <EditText
-            style ="@style/LoginTextInputStyle"
-            android:id="@+id/username"
-            android:hint="Enter SJSU Email Id"
-            android:inputType="text"
-            />
-
-
-        <EditText
-            style ="@style/LoginTextInputStyle"
-            android:id="@+id/password"
-            android:hint="Enter Password"
-            android:inputType="textPassword"
-            />
-
-        <Button
-            style = "@style/SubmitButtonStyle"
-            android:id="@+id/login"
-            android:text="Login"
-            />
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"/>
 
     </LinearLayout>
 
 </ScrollView>
+
