@@ -231,14 +231,12 @@ public class PathsActivity extends AppCompatActivity {
             canvas.drawCircle(x2, y2, (float) 7.0, paintR);
 
             canvas.drawLine(x1, y1, x2, y2, paint);
-        }
 
-//        canvas.drawLine(100, 100, 500, 100, paint);
-
-        if (flag == 1){
-            ImageView imageView = (ImageView)findViewById(R.id.imageViewSJSU);
-            imageView.setAdjustViewBounds(true);
-            imageView.setImageBitmap(mutableBitmap);
+            if (i == vertices.size() - 2) {
+                ImageView imageView = (ImageView)findViewById(R.id.imageViewSJSU);
+                imageView.setAdjustViewBounds(true);
+                imageView.setImageBitmap(mutableBitmap);
+            }
         }
     }
 
