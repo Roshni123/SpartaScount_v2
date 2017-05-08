@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="com.example.android.spartascout.PathsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <TextView
+            style="@style/VRTextView"
+            android:text="Where would you like to go?"
+            />
+
+
+        <AutoCompleteTextView
+            style ="@style/VRTextInputStyle"
+            android:id="@+id/txtSpeechInputFrom"
+            android:hint="Enter Source"
+            />
+
+        <AutoCompleteTextView
+            style ="@style/VRTextInputStyle"
+            android:id="@+id/txtSpeechInputTo"
+            android:hint="Enter Destination"
+            />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/searchPath"
+                style="@style/SubmitButtonStyle"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_toLeftOf="@+id/speak"
+                android:layout_toStartOf="@+id/speak"
+                android:text="Submit" />
+
+            <ImageButton
+                android:id="@+id/speak"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="111dp"
+                android:layout_marginRight="111dp"
+                app:srcCompat="@android:drawable/ic_btn_speak_now"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:background="@null"/>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/textViewPath"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <ImageView
+            android:id="@+id/imageViewSJSU"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/campus_map" />
+
+
+    </LinearLayout>
+
+</ScrollView>
