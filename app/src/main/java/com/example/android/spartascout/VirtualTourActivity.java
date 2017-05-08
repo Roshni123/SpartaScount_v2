@@ -25,9 +25,11 @@ public class VirtualTourActivity extends YouTubeBaseActivity {
         startActivity(ytIntent);
         try {
             Thread.sleep(8000);
-            Runtime.getRuntime().exec("su -c /system/bin/input tap 1700 1000");
+//            Runtime.getRuntime().exec("su -c /system/bin/input tap 1700 1000"); Nexus 5
+            Runtime.getRuntime().exec("su -c /system/bin/input tap 1180 700"); // Nexus 4
             Thread.sleep(1000);
-            Runtime.getRuntime().exec("su -c /system/bin/input tap 1700 1000");
+//            Runtime.getRuntime().exec("su -c /system/bin/input tap 1700 1000"); Nexus 5
+            Runtime.getRuntime().exec("su -c /system/bin/input tap 1180 700"); // Nexus 4
             System.out.println("ROSHNI ACTIVITY SUCCESS.......");
         }
         catch (Exception e){

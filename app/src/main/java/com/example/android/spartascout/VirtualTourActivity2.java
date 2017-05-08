@@ -19,10 +19,6 @@ public class VirtualTourActivity2 extends YouTubeBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_virtual_tour);
-        // Embed link: https://www.youtube.com/embed/Z2O-jY1YNVA?start=25&end=30
-//        Intent ytIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/v/Z2O-jY1YNVA?start=10&end=20&version=3&autoplay=1"));
-//        https://www.youtube.com/watch?v=Z2O-jY1YNVA&t=10s
-//  This is working      Intent ytIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=Z2O-jY1YNVA&t=25s"));
         Bundle b = getIntent().getExtras();
         int seek_point = b.getInt("seek");
         String url = b.getString("url");
@@ -32,9 +28,11 @@ public class VirtualTourActivity2 extends YouTubeBaseActivity {
         startActivity(ytIntent);
         try {
             Thread.sleep(8000);
-            Runtime.getRuntime().exec("su -c /system/bin/input tap 1700 1000");
+//            Runtime.getRuntime().exec("su -c /system/bin/input tap 1700 1000"); Nexus 5
+            Runtime.getRuntime().exec("su -c /system/bin/input tap 1180 700"); // Nexus 4
             Thread.sleep(1000);
-            Runtime.getRuntime().exec("su -c /system/bin/input tap 1700 1000");
+//            Runtime.getRuntime().exec("su -c /system/bin/input tap 1700 1000"); Nexus 5
+            Runtime.getRuntime().exec("su -c /system/bin/input tap 1180 700"); // Nexus 4
             System.out.println("ROSHNI ACTIVITY SUCCESS.......");
         }
         catch (Exception e){
