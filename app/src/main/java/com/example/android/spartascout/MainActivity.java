@@ -85,10 +85,12 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
     private void handleSignInResult(GoogleSignInResult result) {
         Log.d(TAG, "handleSignInResult:" + result.isSuccess());
-        if (result.isSuccess()) {
+//        if (result.isSuccess()) {
+        if (true) {
             // Signed in successfully, show authenticated UI.
-            GoogleSignInAccount acct = result.getSignInAccount();
-            String personName = acct.getDisplayName();
+//            GoogleSignInAccount acct = result.getSignInAccount();
+//            String personName = acct.getDisplayName();
+            String personName = "Sanjeedha Test";
 
             Intent loginIntent = new Intent(MainActivity.this, HomeActivity.class);
             loginIntent.putExtra("NAME", personName);

@@ -128,6 +128,21 @@ public class HomeActivity extends AppCompatActivity {
             });
         }
 
+        // Find the View that shows the paths category
+        Button paths = (Button) findViewById(R.id.paths);
+
+        // Set a click listener on that View
+        if (paths != null) {
+            paths.setOnClickListener(new View.OnClickListener() {
+                // The code in this method will be executed when the paths View is clicked on.
+                @Override
+                public void onClick(View view) {
+                    Intent paths = new Intent(HomeActivity.this, PathsActivity.class);
+                    startActivity(paths);
+                }
+            });
+        }
+
         //
         Button sign_out = (Button) findViewById(R.id.sign_out);
 
